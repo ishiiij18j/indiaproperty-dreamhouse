@@ -14,7 +14,113 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      enquiries: {
+        Row: {
+          budget: string | null
+          city: string | null
+          created_at: string
+          email: string | null
+          full_name: string
+          id: string
+          message: string | null
+          phone: string
+          property_id: string | null
+        }
+        Insert: {
+          budget?: string | null
+          city?: string | null
+          created_at?: string
+          email?: string | null
+          full_name: string
+          id?: string
+          message?: string | null
+          phone: string
+          property_id?: string | null
+        }
+        Update: {
+          budget?: string | null
+          city?: string | null
+          created_at?: string
+          email?: string | null
+          full_name?: string
+          id?: string
+          message?: string | null
+          phone?: string
+          property_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "enquiries_property_id_fkey"
+            columns: ["property_id"]
+            isOneToOne: false
+            referencedRelation: "properties"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      properties: {
+        Row: {
+          amenities: string[]
+          bathrooms: number
+          bedrooms: number
+          carpet_area_sqft: number
+          city: string
+          created_at: string
+          description: string
+          featured: boolean
+          id: string
+          image_key: string
+          locality: string
+          name: string
+          possession: string | null
+          price_inr: number
+          property_type: string
+          rera_number: string | null
+          slug: string
+          status: string
+        }
+        Insert: {
+          amenities?: string[]
+          bathrooms?: number
+          bedrooms?: number
+          carpet_area_sqft: number
+          city: string
+          created_at?: string
+          description?: string
+          featured?: boolean
+          id?: string
+          image_key?: string
+          locality: string
+          name: string
+          possession?: string | null
+          price_inr: number
+          property_type: string
+          rera_number?: string | null
+          slug: string
+          status?: string
+        }
+        Update: {
+          amenities?: string[]
+          bathrooms?: number
+          bedrooms?: number
+          carpet_area_sqft?: number
+          city?: string
+          created_at?: string
+          description?: string
+          featured?: boolean
+          id?: string
+          image_key?: string
+          locality?: string
+          name?: string
+          possession?: string | null
+          price_inr?: number
+          property_type?: string
+          rera_number?: string | null
+          slug?: string
+          status?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
