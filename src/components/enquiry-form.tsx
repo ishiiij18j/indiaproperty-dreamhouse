@@ -10,6 +10,8 @@ type Props = {
   compact?: boolean;
 };
 
+type FieldErrors = { full_name?: string; phone?: string; email?: string };
+
 const emptyForm = {
   full_name: "",
   phone: "",
@@ -47,7 +49,7 @@ export function EnquiryForm({ propertyId, propertyName, compact }: Props) {
     setForm((f) => ({ ...f, [key]: value }));
 
   const validate = () => {
-    const next: Record<string, string> = {};
+    const next: FieldErrors = {};
     if (form.full_name.trim().length < 2) next.full_name = "Please enter your name";
     if (!/^(\+91[\s-]?)?[6-9]\d{9}$/.test(form.phone.replace(/\s|-/g, "")))
       next.phone = "Enter a valid 10-digit Indian mobile number";
