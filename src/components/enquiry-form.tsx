@@ -21,7 +21,11 @@ const emptyForm = {
 
 export function EnquiryForm({ propertyId, propertyName, compact }: Props) {
   const [form, setForm] = useState(emptyForm);
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  type FieldErrors = { full_name?: string; phone?: string; email?: string };
+
+function useFieldErrors() {
+  return useState<FieldErrors>({});
+}
 
   const mutation = useMutation({
     mutationFn: () =>
